@@ -1,5 +1,5 @@
-import "../public/style/contact-me.scss";
-import "../public/style/glassy.scss";
+import "/src/style/ContactMe.scss";
+import "/src/style/glassy.scss";
 
 function ContactLink({ linkAddress, label, icon }) {
   return (

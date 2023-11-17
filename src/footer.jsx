@@ -1,5 +1,5 @@
-import "../public/style/footer.scss";
-import "../public/style/glassy.scss";
+import "/src/style/footer.scss";
+import "/src/style/glassy.scss";
 
 export default function Footer({ footerText }) {
   return (

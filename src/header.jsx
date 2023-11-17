@@ -1,5 +1,5 @@
-import "../public/style/header.scss";
-import "../public/style/header.scss";
+import "/src/style/header.scss";
+import "/src/style/header.scss";
 
 function HeaderButton({ label }) {
   return (
@@ -12,9 +12,6 @@ function HeaderButton({ label }) {
 export default function Header() {
   return (
     <header className="glassy">
-      {/* <HeaderButton>
-        <i className="bi-house-fill" />
-      </HeaderButton> */}
       <HeaderButton label={"Personal"} />
       <HeaderButton label={"Projects"} />
     </header>

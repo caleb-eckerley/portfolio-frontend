@@ -1,15 +1,16 @@
+@use "globals";
+
 header {
-  position: fixed;
+  position: sticky;
   left: 0;
   top: 0;
   width: 100%;
-  font-size: 24px;
-  height: fit-content;
-  margin-top: 0;
-  margin-bottom: 0;
-  z-index: 1;
+  height: globals.$header-height;
+  z-index: 999;
   display: flex;
   align-items: center;
+  font-size: 22px;
+  margin: 0px;
 }
 
 .header-link {
@@ -30,5 +31,5 @@ header {
   padding-top: 12px;
   padding-bottom: 12px;
   padding-right: 24px;
-  color: white;
+  color: globals.$default-text-color;
 }

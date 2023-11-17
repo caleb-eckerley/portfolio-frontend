@@ -1,5 +1,5 @@
-import "../public/style/about-me.scss";
-import "../public/style/glassy.scss";
+import "/src/style/AboutMe.scss";
+import "/src/style/glassy.scss";
 
 function TextContainer({ aboutMeText }) {
   return (
@@ -27,7 +27,7 @@ export default function AboutMe({ aboutMeText, chipArray }) {
   return (
     <section id="about-me-section" className="glassy">
       <div id="about-me-container">
-        <img id="about-me-img" src="../public/img/caleb-eckerley-square.jpg" />
+        <img id="about-me-img" src="/caleb-eckerley-square.JPG" />
         <TextContainer aboutMeText={aboutMeText} />
       </div>
       <ChipContainer chipArray={chipArray} />
