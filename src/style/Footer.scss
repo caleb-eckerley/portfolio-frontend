@@ -1,11 +1,15 @@
 footer {
-  position: fixed;
+  position: sticky;
   left: 0;
   bottom: 0;
   width: 100%;
   color: white;
   height: fit-content;
-  z-index: 1;
+  z-index: 999;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
 }
 
 .footer-disclaimer {

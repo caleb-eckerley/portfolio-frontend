@@ -14,12 +14,12 @@ header {
 }
 
 .header-link {
-  all: unset;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 .header-link:hover {
+  all: unset;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
