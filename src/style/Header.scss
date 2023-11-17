@@ -17,11 +17,12 @@ header {
   all: unset;
   margin-top: 0;
   margin-bottom: 0;
-  :hover {
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  }
+}
+
+.header-link:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .header-button {
