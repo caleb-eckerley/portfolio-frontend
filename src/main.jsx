@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
 import AboutContainer from "./AboutContainer.jsx";
+import "bootstrap-icons/font/bootstrap-icons.scss"; //Bootstrap Icon Library
+import "/src/style/glassy.scss"; //CSS Module
 import "/src/style/index.scss";
 
 import jsonData from "../data/about-me.json";

@@ -1,5 +1,5 @@
 import "/src/style/AboutMe.scss";
-import "/src/style/glassy.scss";
+import { ChipContainer } from "./Chip.jsx";
 
 function TextContainer({ aboutMeText }) {
   return (
@@ -7,20 +7,6 @@ function TextContainer({ aboutMeText }) {
       <p id="about-me-text">{aboutMeText}</p>
     </div>
   );
-}
-
-function ChipContainer({ chipArray }) {
-  const chipList = chipArray.map((chip) => (
-    <Chip chipClassName={chip.class} chipText={chip.text} key={chip.key} />
-  ));
-  return <div className="chip-container">{chipList}</div>;
-}
-
-//TODO
-function Chip({ chipClassName, chipText }) {
-  let chipClass = "chip ";
-  chipClass += chipClassName == "gold" ? "gold-chip" : "blue-chip";
-  return <div className={chipClass}>{chipText}</div>;
 }
 
 export default function AboutMe({ aboutMeText, chipArray }) {

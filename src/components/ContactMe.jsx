@@ -1,6 +1,5 @@
 import "/src/style/ContactMe.scss";
 import "/src/style/glassy.scss";
-import "bootstrap-icons/font/bootstrap-icons.scss";
 
 function ContactLink({ linkAddress, label, icon }) {
   return (

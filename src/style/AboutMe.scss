@@ -40,38 +40,6 @@
   display: inline;
 }
 
-.chip-container {
-  align-self: flex-end;
-  margin: 18px;
-}
-
-.chip {
-  width: fit-content;
-  height: 25px;
-  margin-right: 6px;
-  border: 1px solid rgba(92, 92, 92, 0.7);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-
-  /* Center the content */
-  align-items: center;
-  display: inline-flex;
-  justify-content: center;
-
-  /* Rounded border */
-  border-radius: 9999px;
-
-  /* Spacing */
-  padding: 0.25rem 0.5rem;
-}
-
-.chip:last-of-type {
+.chip-container > .chip:last-of-type {
   margin-right: 0px;
-}
-
-.gold-chip {
-  background: gold;
-}
-
-.blue-chip {
-  background: lightblue;
 }
