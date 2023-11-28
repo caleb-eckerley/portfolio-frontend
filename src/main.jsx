@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Header />
     <AboutContainer data={jsonData} />
-    {/* <IconLink iconClass='bi-house-fill' text='Hello' /> */}
+
     {/* <IconLink iconClass='bi-house' text='testing testing 123 testing' /> */}
   </React.StrictMode>
 );

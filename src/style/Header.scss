@@ -1,6 +1,6 @@
 @use "globals";
 
-header {
+nav {
   position: sticky;
   left: 0;
   top: 0;
@@ -13,7 +13,16 @@ header {
   margin: 0px;
 }
 
+.nav-left {
+  position: relative;
+  border: 1px solid black;
+  margin-top: 0;
+  margin-bottom: 0;
+  height: globals.$header-height;
+}
+
 .header-link {
+  height: 100%;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -26,8 +35,8 @@ header {
 }
 
 .header-button {
-  margin-top: 0;
-  margin-bottom: 0;
+  display: inline;
+  height: 100%;
   padding-left: 24px;
   padding-top: 12px;
   padding-bottom: 12px;

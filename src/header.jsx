@@ -1,17 +1,18 @@
 import "/src/style/header.scss";
+import IconLink from "/src/components/IconLink.jsx";
 
 function HeaderButton({ label }) {
   return (
-    <a className="header-link">
-      <div className="header-button">{label}</div>
+    <a className='header-link'>
+      <div className='header-button'>{label}</div>
     </a>
   );
 }
 
 function HomeButton({ iconClass }) {
   return (
-    <a className="header-link">
-      <div className="header-button">
+    <a className='header-link'>
+      <div className='header-button'>
         <i className={iconClass}></i>
       </div>
     </a>
@@ -20,10 +21,15 @@ function HomeButton({ iconClass }) {
 
 export default function Header() {
   return (
-    <header className="glassy">
-      <HomeButton iconClass={"bi-house-fill"} />
-      <HeaderButton label={"Personal"} />
-      <HeaderButton label={"Projects"} />
-    </header>
+    <nav className='glassy'>
+      <div className='nav-left'>
+        <HomeButton iconClass={"bi-house-fill"} />
+        <HeaderButton label={"Personal"} />
+        <HeaderButton label={"Projects"} />
+      </div>
+      <div>
+        <IconLink src='/public/LI-In-Bug.png' />
+      </div>
+    </nav>
   );
 }

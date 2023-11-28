@@ -2,17 +2,17 @@ import "/src/style/IconLink.scss";
 
 function handleIconSource(value) {
   if (value.startsWith("bi")) {
-    return <i className={value}></i>;
+    return <i className={value + " Icon"}></i>;
   }
-  return <img href={value} />;
+  return <img src={value} className='Icon' />;
 }
 
-export default function IconLink({ iconClass, size, text }) {
+export default function IconLink({ src, size, text }) {
   const iconStyle = {
     fontSize: size
   };
 
-  const icon = handleIconSource(iconClass);
+  const icon = handleIconSource(src);
 
   var iconText = null;
   if (text) {
