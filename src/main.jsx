@@ -17,15 +17,17 @@ import "/src/style/glassy.scss";
 import Header from "/src/Header.jsx";
 import AboutContainer from "/src/AboutContainer.jsx";
 import IconLink from "/src/components/IconLink.jsx";
+import NavigationBar from "/src/components/NavigationBar.jsx";
 
 //Dummy data import
 import jsonData from "../data/about-me.json";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Header />
     <AboutContainer data={jsonData} />
-
+    <hr style={{ marginBottom: "0px" }} />
+    <NavigationBar />
+    <hr style={{ marginTop: "0px" }} />
     {/* <IconLink iconClass='bi-house' text='testing testing 123 testing' /> */}
   </React.StrictMode>
 );
