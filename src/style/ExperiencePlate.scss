@@ -1,0 +1,7 @@
+.clamp {
+  height: 150px;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow-wrap: break-word;
+}
