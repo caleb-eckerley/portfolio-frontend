@@ -24,7 +24,7 @@ function handleContentList(content) {
   return contentList;
 }
 
-export default function ExperiencePlate({ jobTitleProp, employerProp, jobStartProp, jobEndProp, contentListProp }) {
+export default function ExperiencePlate({ jobTitleProp, employerProp, jobStartProp, jobEndProp, contentListProp, hidden }) {
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -41,6 +41,7 @@ export default function ExperiencePlate({ jobTitleProp, employerProp, jobStartPr
   return (
     <Card
       variant='solid'
+      hidden={hidden}
       style={{
         marginLeft: "1rem",
         marginRight: "1rem",

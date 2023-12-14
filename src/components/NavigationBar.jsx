@@ -1,43 +1,26 @@
+import * as React from "react";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+
 function generateNavItems(navList) {
   let navigationList = [];
   for (let idx = 0; idx < navList.length; idx++) {
     let navObj = navList[idx];
 
-    navigationList.push(
-      <li style={{ position: "relative", boxSizing: "border-box" }} key={idx}>
-        <a href={navObj.href} style={{ background: "none", cursor: "pointer", textDecoration: "none", color: "white", padding: "0.5rem" }}>
-          {navObj.text}
-        </a>
-      </li>
-    );
+    navigationList.push(<Tab label={navObj.text} href={navObj.href} key={idx} value={idx} />);
   }
   return navigationList;
 }
 
-export default function NavigationBar({ navList }) {
+export default function NavigationBar({ value, click, navList }) {
   const navMembers = generateNavItems(navList);
 
   return (
     <div>
       <hr style={{ marginBottom: "0px", marginTop: "0px" }} />
-      <nav>
-        <ul
-          style={{
-            height: "100%",
-            width: "100%",
-            listStyle: "none",
-            padding: 0,
-            margin: 0,
-            display: "flex",
-            gap: "1rem",
-            justifyContent: "space-around",
-            alignItems: "center",
-            boxSizing: "border-box"
-          }}
-        >
-          {navMembers}
-        </ul>
-      </nav>
+      <Tabs value={value} onChange={click} variant='fullWidth' centered>
+        {navMembers}
+      </Tabs>
       <hr style={{ marginBottom: "0px", marginTop: "0px" }} />
     </div>
   );
