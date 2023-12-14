@@ -1,4 +1,4 @@
-import "/src/style/Chip.scss";
+// import "/src/style/Chip.scss";
 
 /**
  *

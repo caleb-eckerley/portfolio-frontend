@@ -1,7 +1,7 @@
 import AboutMe from "./components/AboutMe.jsx";
 import ContactMe from "./components/ContactMe.jsx";
 
-import "/src/style/AboutContainer.scss";
+// import "/src/style/AboutContainer.scss";
 
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";

@@ -1,4 +1,4 @@
-import "/src/style/IconLink.scss";
+// import "/src/style/IconLink.scss";
 
 function handleIconSource(value) {
   if (value.startsWith("bi")) {

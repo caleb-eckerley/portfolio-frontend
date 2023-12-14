@@ -1,7 +1,6 @@
 //Node imports
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import "bootstrap-icons/font/bootstrap-icons.scss";
 
 //Style imports
 import "/src/style/index.scss";

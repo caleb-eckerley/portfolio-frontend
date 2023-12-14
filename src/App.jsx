@@ -12,10 +12,7 @@ import "@fontsource/roboto/900.css";
 import AboutContainer from "/src/AboutContainer.jsx";
 import NavigationBar from "/src/components/NavigationBar.jsx";
 import ExperiencePlate from "/src/components/ExperiencePlate.jsx";
-
-const getChildDate = (childData) => {
-  return childData;
-};
+import AboutProject from "/src/components/AboutProject.jsx";
 
 export default function App({ testData }) {
   const [tabState, setTabState] = React.useState(0);
@@ -23,6 +20,7 @@ export default function App({ testData }) {
   const handleSetTabState = (event, state) => {
     setTabState(state);
   };
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
       <AboutContainer data={testData} />
@@ -43,8 +41,9 @@ export default function App({ testData }) {
           jobStartProp={"September 1, 2022"}
           jobEndProp={"July 31, 2023"}
           contentListProp={Array(15).fill("hello", 0, 15)}
-          hidden={tabState ? true : false}
+          hidden={tabState == 0 ? false : true}
         />
+        <AboutProject title='A Dummy Title' dateAdded='1/2/34' content={testData.aboutMeText} hidden={tabState == 1 ? false : true} chips={testData.chips} />
       </div>
     </div>
   );

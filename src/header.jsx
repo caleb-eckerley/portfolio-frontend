@@ -1,4 +1,4 @@
-import "/src/style/header.scss";
+// import "/src/style/header.scss";
 import IconLink from "/src/components/IconLink.jsx";
 
 function HeaderButton({ label }) {

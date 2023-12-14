@@ -1,4 +1,4 @@
-import "/src/style/ContactMe.scss";
+// import "/src/style/ContactMe.scss";
 
 function ContactLink({ linkAddress, label, icon }) {
   return (

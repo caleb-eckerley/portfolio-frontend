@@ -1,0 +1,123 @@
+import * as React from "react";
+import Card from "@mui/material/Card";
+import Button from "@mui/material/Button";
+import Link from "@mui/material/Link";
+import Chip from "@mui/material/Chip";
+
+export default function AboutProject(props) {
+  const [expanded, setExpanded] = React.useState(false);
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
+  const chipList = props.chips.map((chip) => {
+    return (
+      <Chip
+        label={chip.text}
+        size='small'
+        style={{
+          background: chip.color,
+          paddingTop: "0px",
+          width: "fit-content"
+        }}
+        key={chip.key}
+      />
+    );
+  });
+  return (
+    <Card
+      variant='solid'
+      hidden={props.hidden}
+      style={{
+        marginLeft: "1rem",
+        marginRight: "1rem",
+        padding: "0.5rem",
+        minHeight: "225px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between"
+      }}
+    >
+      <div>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", height: "fit-content" }}>
+          <p style={{ margin: "0px", fontWeight: "600", fontSize: "large" }}>{props.title}</p>
+          <p style={{ margin: "0px", fontSize: "small", fontStyle: "italic" }}>{props.dateAdded}</p>
+        </div>
+        <div
+          style={{
+            height: "fit-content",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "flex-start",
+            gap: "8px",
+            rowGap: "8px"
+          }}
+        >
+          {chipList}
+        </div>
+        <p className={expanded ? "" : "clamp"} style={{ margin: 0 }}>
+          {props.content}
+        </p>
+      </div>
+      <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
+        {/* Simplify this. Want a link with the same look as the button */}
+        <Link>
+          <Button
+            size='small'
+            style={{
+              fontSize: "small",
+              fontFamily: [
+                "system-ui",
+                "-apple-system",
+                "BlinkMacSystemFont",
+                "Segoe UI",
+                "Roboto",
+                "Oxygen",
+                "Ubuntu",
+                "Cantarell",
+                "Open Sans",
+                "Helvetica Neue",
+                "sans-serif"
+              ],
+              fontWeight: "600"
+            }}
+          >
+            Hey
+          </Button>
+        </Link>
+        <Button
+          variant='text'
+          size='small'
+          style={{
+            fontFamily: [
+              "system-ui",
+              "-apple-system",
+              "BlinkMacSystemFont",
+              "Segoe UI",
+              "Roboto",
+              "Oxygen",
+              "Ubuntu",
+              "Cantarell",
+              "Open Sans",
+              "Helvetica Neue",
+              "sans-serif"
+            ],
+            fontWeight: "600"
+          }}
+          onClick={handleExpandClick}
+        >
+          {expanded ? "Collapse" : "Expand"}
+        </Button>
+      </div>
+    </Card>
+  );
+}
+
+/**
+ * Needs:
+ *  - Title
+ *  - Date added
+ *  - Chips (at top)
+ *  - Excerpt explanation (not bullets)
+ *  - Link code repo or end product
+ */
