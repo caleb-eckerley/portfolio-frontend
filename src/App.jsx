@@ -41,9 +41,9 @@ export default function App({ testData }) {
           jobStartProp={"September 1, 2022"}
           jobEndProp={"July 31, 2023"}
           contentListProp={Array(15).fill("hello", 0, 15)}
-          hidden={tabState == 0 ? false : true}
+          isHidden={tabState == 0 ? false : true}
         />
-        <AboutProject title='A Dummy Title' dateAdded='1/2/34' content={testData.aboutMeText} hidden={tabState == 1 ? false : true} chips={testData.chips} />
+        <AboutProject title='A Dummy Title' dateAdded='1/2/34' content={testData.aboutMeText} isHidden={tabState == 1 ? false : true} chips={testData.chips} />
       </div>
     </div>
   );

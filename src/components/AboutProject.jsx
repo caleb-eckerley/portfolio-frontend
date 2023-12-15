@@ -5,6 +5,9 @@ import Link from "@mui/material/Link";
 import Chip from "@mui/material/Chip";
 
 export default function AboutProject(props) {
+  if (props.isHidden) {
+    return null;
+  }
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -27,7 +30,6 @@ export default function AboutProject(props) {
   return (
     <Card
       variant='solid'
-      hidden={props.hidden}
       style={{
         marginLeft: "1rem",
         marginRight: "1rem",
