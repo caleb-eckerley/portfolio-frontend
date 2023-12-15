@@ -23,7 +23,17 @@ export default function App({ testData }) {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "0.5rem",
+        maxWidth: "105ch",
+        background: "#404040",
+        padding: "1rem",
+        height: "fit-content"
+      }}
+    >
       <AboutContainer data={testData} />
       <NavigationBar
         value={tabState}
@@ -41,7 +51,7 @@ export default function App({ testData }) {
           employerProp={"Solution Source"}
           jobStartProp={"September 1, 2022"}
           jobEndProp={"July 31, 2023"}
-          contentListProp={Array(15).fill("hello", 0, 15)}
+          contentListProp={Array(30).fill("hello", 0, 15)}
           isHidden={tabState == 0 ? false : true}
         />
         <AboutProject title='A Dummy Title' dateAdded='1/2/34' content={testData.aboutMeText} isHidden={tabState == 1 ? false : true} chips={testData.chips} />
