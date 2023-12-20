@@ -26,6 +26,7 @@ public
 *.njsproj
 *.sln
 *.sw?
+*.config.js
 
 # Remove when ready
 *.md
