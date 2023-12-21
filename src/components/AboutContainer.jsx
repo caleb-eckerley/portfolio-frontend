@@ -1,14 +1,4 @@
-import AboutMe from "./components/AboutMe.jsx";
-import ContactMe from "./components/ContactMe.jsx";
-
-// import "/src/style/AboutContainer.scss";
-
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
-import { Typography } from "@mui/material";
 import { Chip } from "@mui/material";
-import { SvgIcon } from "@mui/material";
 
 export default function AboutContainer({ data }) {
   const chipList = data.chips.map((chip) => {

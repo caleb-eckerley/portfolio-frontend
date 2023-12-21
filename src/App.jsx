@@ -9,13 +9,16 @@ import "@fontsource/roboto/700.css";
 import "@fontsource/roboto/900.css";
 
 //Component imports
-import AboutContainer from "/src/AboutContainer.jsx";
+import AboutContainer from "/src/components/AboutContainer.jsx";
 import NavigationBar from "/src/components/NavigationBar.jsx";
 import ExperiencePlate from "/src/components/ExperiencePlate.jsx";
 import AboutProject from "/src/components/AboutProject.jsx";
 import AboutSkills from "/src/components/AboutSkills.jsx";
 
+import { getProjects } from "/src/serverCalls.js";
+
 export default function App({ testData }) {
+  console.log(getProjects());
   const [tabState, setTabState] = React.useState(0);
 
   const handleSetTabState = (event, state) => {
