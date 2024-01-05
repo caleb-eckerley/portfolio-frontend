@@ -4,29 +4,26 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Chip from "@mui/material/Chip";
 
-export default function AboutProject(props) {
-  if (props.isHidden) {
-    return null;
-  }
+function ProjectCard(props) {
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const chipList = props.chips.map((chip) => {
-    return (
-      <Chip
-        label={chip.text}
-        size='small'
-        style={{
-          background: chip.color,
-          paddingTop: "0px",
-          width: "fit-content"
-        }}
-        key={chip.key}
-      />
-    );
-  });
+  // const chipList = props.chips.map((chip) => {
+  //   return (
+  //     <Chip
+  //       label={chip.text}
+  //       size='small'
+  //       style={{
+  //         background: chip.color,
+  //         paddingTop: "0px",
+  //         width: "fit-content"
+  //       }}
+  //       key={chip._id}
+  //     />
+  //   );
+  // });
   return (
     <Card
       variant='solid'
@@ -55,7 +52,7 @@ export default function AboutProject(props) {
             rowGap: "8px"
           }}
         >
-          {chipList}
+          {/* {chipList} */}
         </div>
         <p className={expanded ? "" : "clamp"} style={{ margin: 0 }}>
           {props.content}
@@ -84,7 +81,7 @@ export default function AboutProject(props) {
               fontWeight: "600"
             }}
           >
-            Hey
+            Link
           </Button>
         </Link>
         <Button
@@ -113,6 +110,19 @@ export default function AboutProject(props) {
       </div>
     </Card>
   );
+}
+
+export default function ProjectList(props) {
+  if (props.isHidden) {
+    return null;
+  }
+  var projectCards = [];
+  console.log(props.projectData);
+  for (let project of props.projectData) {
+    console.log(project);
+    projectCards.push(<ProjectCard title={project.title} dateAdded={project.date} chips={project.chip} key={project._id} />);
+  }
+  return <div>{projectCards}</div>;
 }
 
 /**
