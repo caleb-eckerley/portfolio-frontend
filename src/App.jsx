@@ -12,14 +12,18 @@ import "@fontsource/roboto/900.css";
 import AboutContainer from "/src/components/AboutContainer.jsx";
 import NavigationBar from "/src/components/NavigationBar.jsx";
 import ExperiencePlate from "/src/components/ExperiencePlate.jsx";
-import AboutProject from "/src/components/AboutProject.jsx";
+import ProjectList from "/src/components/ProjectList.jsx";
 import AboutSkills from "/src/components/AboutSkills.jsx";
 
-import { getProjects } from "/src/serverCalls.js";
+import { getProjects } from "/src/api/serverCalls.js";
 
 export default function App({ testData }) {
-  console.log(getProjects());
   const [tabState, setTabState] = React.useState(0);
+  const [projectData, setProjectData] = React.useState([]);
+
+  React.useEffect(() => {
+    setProjectData(getProjects());
+  }, []);
 
   const handleSetTabState = (event, state) => {
     setTabState(state);
@@ -57,7 +61,7 @@ export default function App({ testData }) {
           contentListProp={Array(30).fill("hello", 0, 15)}
           isHidden={tabState == 0 ? false : true}
         />
-        <AboutProject title='A Dummy Title' dateAdded='1/2/34' content={testData.aboutMeText} isHidden={tabState == 1 ? false : true} chips={testData.chips} />
+        <ProjectList projectData={projectData} isHidden={tabState == 1 ? false : true} />
         <AboutSkills isHidden={tabState == 2 ? false : true} data={testData.chips} />
       </div>
     </div>
