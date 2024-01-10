@@ -4,26 +4,27 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Chip from "@mui/material/Chip";
 
-function ProjectCard(props) {
+function ProjectCard({ title, dateAdded, chips, content }) {
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  // const chipList = props.chips.map((chip) => {
-  //   return (
-  //     <Chip
-  //       label={chip.text}
-  //       size='small'
-  //       style={{
-  //         background: chip.color,
-  //         paddingTop: "0px",
-  //         width: "fit-content"
-  //       }}
-  //       key={chip._id}
-  //     />
-  //   );
-  // });
+  const chipList = chips.map((chip) => {
+    return (
+      <Chip
+        label={chip.name}
+        size='small'
+        style={{
+          background: "lightblue",
+          paddingTop: "0px",
+          width: "fit-content"
+        }}
+        key={chip._id}
+      />
+    );
+  });
+
   return (
     <Card
       variant='solid'
@@ -39,8 +40,8 @@ function ProjectCard(props) {
     >
       <div>
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", height: "fit-content" }}>
-          <p style={{ margin: "0px", fontWeight: "600", fontSize: "large" }}>{props.title}</p>
-          <p style={{ margin: "0px", fontSize: "small", fontStyle: "italic" }}>{props.dateAdded}</p>
+          <p style={{ margin: "0px", fontWeight: "600", fontSize: "large" }}>{title}</p>
+          <p style={{ margin: "0px", fontSize: "small", fontStyle: "italic" }}>{dateAdded}</p>
         </div>
         <div
           style={{
@@ -52,10 +53,10 @@ function ProjectCard(props) {
             rowGap: "8px"
           }}
         >
-          {/* {chipList} */}
+          {chipList}
         </div>
         <p className={expanded ? "" : "clamp"} style={{ margin: 0 }}>
-          {props.content}
+          {content}
         </p>
       </div>
       <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
@@ -117,10 +118,8 @@ export default function ProjectList(props) {
     return null;
   }
   var projectCards = [];
-  console.log(props.projectData);
   for (let project of props.projectData) {
-    console.log(project);
-    projectCards.push(<ProjectCard title={project.title} dateAdded={project.date} chips={project.chip} key={project._id} />);
+    projectCards.push(<ProjectCard title={project.title} dateAdded={project.date} chips={project.chip} key={project._id} content={project.desc} />);
   }
   return <div>{projectCards}</div>;
 }
