@@ -123,12 +123,3 @@ export default function ProjectList(props) {
   }
   return <div>{projectCards}</div>;
 }
-
-/**
- * Needs:
- *  - Title
- *  - Date added
- *  - Chips (at top)
- *  - Excerpt explanation (not bullets)
- *  - Link code repo or end product
- */

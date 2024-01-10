@@ -13,16 +13,21 @@ import AboutContainer from "/src/components/AboutContainer.jsx";
 import NavigationBar from "/src/components/NavigationBar.jsx";
 import ExperiencePlate from "/src/components/ExperiencePlate.jsx";
 import ProjectList from "/src/components/ProjectList.jsx";
-import AboutSkills from "/src/components/AboutSkills.jsx";
+import SkillsList from "/src/components/SkillsList.jsx";
 
-import { getProjects } from "/src/api/serverCalls.js";
+import { getProjects, getSkills } from "/src/api/serverCalls.js";
 
 export default function App({ testData }) {
   const [tabState, setTabState] = React.useState(0);
   const [projectData, setProjectData] = React.useState([]);
+  const [skillData, setSkillData] = React.useState([]);
 
   React.useEffect(() => {
     getProjects(setProjectData);
+  }, []);
+
+  React.useEffect(() => {
+    getSkills(setSkillData);
   }, []);
 
   const handleSetTabState = (event, state) => {
@@ -62,7 +67,7 @@ export default function App({ testData }) {
           isHidden={tabState == 0 ? false : true}
         />
         <ProjectList projectData={projectData} isHidden={tabState == 1 ? false : true} />
-        <AboutSkills isHidden={tabState == 2 ? false : true} data={testData.chips} />
+        <SkillsList data={skillData} isHidden={tabState == 2 ? false : true} />
       </div>
     </div>
   );
