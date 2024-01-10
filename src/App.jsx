@@ -22,7 +22,7 @@ export default function App({ testData }) {
   const [projectData, setProjectData] = React.useState([]);
 
   React.useEffect(() => {
-    setProjectData(getProjects());
+    getProjects(setProjectData);
   }, []);
 
   const handleSetTabState = (event, state) => {
