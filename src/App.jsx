@@ -56,7 +56,7 @@ export default function App({ testData }) {
           { text: "Skills", href: "" }
         ]}
       />
-      <div style={{ paddingTop: "1rem" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
         {/* TODO: Replace with container of generated Experience Plates. Attach hidden prop to that container. */}
         <ExperiencePlate
           jobTitleProp={"NetSuite Developer"}

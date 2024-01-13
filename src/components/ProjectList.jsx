@@ -10,17 +10,24 @@ function ProjectCard({ title, dateAdded, chips, content }) {
     setExpanded(!expanded);
   };
 
+  const chipStyleRule = {
+    Software: { background: "green", color: "white" },
+    "Data Science": { background: "blue", color: "white" },
+    DevOps: { background: "red", color: "white" },
+    General: { background: "grey", color: "white" }
+  };
+
   const chipList = chips.map((chip) => {
     return (
       <Chip
         label={chip.name}
         size='small'
         style={{
-          background: "lightblue",
           paddingTop: "0px",
           width: "fit-content"
         }}
         key={chip._id}
+        sx={chipStyleRule[chip.type]}
       />
     );
   });
@@ -121,5 +128,5 @@ export default function ProjectList(props) {
   for (let project of props.projectData) {
     projectCards.push(<ProjectCard title={project.title} dateAdded={project.date} chips={project.chip} key={project._id} content={project.desc} />);
   }
-  return <div>{projectCards}</div>;
+  return <>{projectCards}</>;
 }
