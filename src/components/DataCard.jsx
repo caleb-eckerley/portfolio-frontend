@@ -1,9 +1,20 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
 
-export default function DataCard({ title, dateAdded, chips, content }) {
+function getChipExpandButtonValue(chips, isExpanded, handleOnClick) {
+  if (chips.length > 0) {
+    return (
+      <Button variant='text' size='small' onClick={handleOnClick} style={{ height: "fit-content", width: "fit-content", padding: 0 }}>
+        {isExpanded ? "Less" : "More"}
+      </Button>
+    );
+  } else {
+    return null;
+  }
+}
+
+export default function DataCard({ title, dateAdded, chips = [], content }) {
   const [expanded, setExpanded] = React.useState(false);
   const [chipExpanded, setChipExpanded] = React.useState(false);
   const handleExpandClick = () => {
@@ -12,11 +23,7 @@ export default function DataCard({ title, dateAdded, chips, content }) {
   const handleChipExpanded = () => {
     setChipExpanded(!chipExpanded);
   };
-  const chipExpandButton = (
-    <Button variant='text' size='small' onClick={handleChipExpanded} style={{ height: "fit-content", width: "fit-content", padding: 0 }}>
-      {chipExpanded ? "Less" : "More"}
-    </Button>
-  );
+  const chipExpandButton = getChipExpandButtonValue(chips, chipExpanded, handleChipExpanded);
 
   return (
     <Card
