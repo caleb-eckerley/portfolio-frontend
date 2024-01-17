@@ -1,6 +1,16 @@
 import Chip from "@mui/material/Chip";
 import DataCard from "/src/components/DataCard.jsx";
 
+function getHeader(title, dateAdded) {
+  const header = (
+    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", height: "fit-content" }}>
+      <p style={{ margin: "0px", fontWeight: "600", fontSize: "large" }}>{title}</p>
+      <p style={{ margin: "0px", fontSize: "small", fontStyle: "italic" }}>{dateAdded}</p>
+    </div>
+  );
+  return header;
+}
+
 export default function ProjectList(props) {
   if (props.isHidden) {
     return null;
@@ -29,8 +39,8 @@ export default function ProjectList(props) {
         />
       );
     });
-
-    projectCards.push(<DataCard title={project.title} dateAdded={project.start_date} chips={chipList} key={project._id} content={project.description} />);
+    var header = getHeader(project.title, project.start_date);
+    projectCards.push(<DataCard header={header} chips={chipList} key={project._id} content={project.description} link={"hi!"} />);
   }
   return <>{projectCards}</>;
 }
