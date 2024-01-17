@@ -11,7 +11,8 @@ import "@fontsource/roboto/900.css";
 //Component imports
 import AboutContainer from "/src/components/AboutContainer.jsx";
 import NavigationBar from "/src/components/NavigationBar.jsx";
-import ExperiencePlate from "/src/components/ExperiencePlate.jsx";
+// import ExperiencePlate from "/src/components/ExperiencePlate.jsx";
+import WorkList from "/src/components/WorkList.jsx";
 import ProjectList from "/src/components/ProjectList.jsx";
 import SkillsList from "/src/components/SkillsList.jsx";
 
@@ -58,14 +59,7 @@ export default function App({ testData }) {
       />
       <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
         {/* TODO: Replace with container of generated Experience Plates. Attach hidden prop to that container. */}
-        <ExperiencePlate
-          jobTitleProp={"NetSuite Developer"}
-          employerProp={"Solution Source"}
-          jobStartProp={"September 1, 2022"}
-          jobEndProp={"July 31, 2023"}
-          contentListProp={Array(30).fill("hello", 0, 15)}
-          isHidden={tabState == 0 ? false : true}
-        />
+        <WorkList projectData={projectData} isHidden={tabState == 0 ? false : true} />
         <ProjectList projectData={projectData} isHidden={tabState == 1 ? false : true} />
         <SkillsList data={skillData} isHidden={tabState == 2 ? false : true} />
       </div>
