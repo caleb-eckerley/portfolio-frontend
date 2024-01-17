@@ -11,7 +11,6 @@ import "@fontsource/roboto/900.css";
 //Component imports
 import AboutContainer from "/src/components/AboutContainer.jsx";
 import NavigationBar from "/src/components/NavigationBar.jsx";
-// import ExperiencePlate from "/src/components/ExperiencePlate.jsx";
 import WorkList from "/src/components/WorkList.jsx";
 import ProjectList from "/src/components/ProjectList.jsx";
 import SkillsList from "/src/components/SkillsList.jsx";
