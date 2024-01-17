@@ -2,6 +2,8 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 
+import "/src/style/DataCard.scss";
+
 function getChipExpandButtonValue(chips, isExpanded, handleOnClick) {
   if (chips.length > 0) {
     return (
@@ -14,7 +16,40 @@ function getChipExpandButtonValue(chips, isExpanded, handleOnClick) {
   }
 }
 
-export default function DataCard({ title, dateAdded, chips = [], content }) {
+function getLinkButton(link) {
+  if (link) {
+    return (
+      <Button
+        size='small'
+        disabled={true}
+        style={{
+          float: "left",
+          fontSize: "small",
+          fontFamily: [
+            "system-ui",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Segoe UI",
+            "Roboto",
+            "Oxygen",
+            "Ubuntu",
+            "Cantarell",
+            "Open Sans",
+            "Helvetica Neue",
+            "sans-serif"
+          ],
+          fontWeight: "600"
+        }}
+      >
+        Github
+      </Button>
+    );
+  } else {
+    return null;
+  }
+}
+
+export default function DataCard({ header, chips = [], content, link }) {
   const [expanded, setExpanded] = React.useState(false);
   const [chipExpanded, setChipExpanded] = React.useState(false);
   const handleExpandClick = () => {
@@ -24,6 +59,7 @@ export default function DataCard({ title, dateAdded, chips = [], content }) {
     setChipExpanded(!chipExpanded);
   };
   const chipExpandButton = getChipExpandButtonValue(chips, chipExpanded, handleChipExpanded);
+  const linkButton = getLinkButton(link);
 
   return (
     <Card
@@ -39,10 +75,7 @@ export default function DataCard({ title, dateAdded, chips = [], content }) {
       }}
     >
       <div>
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", height: "fit-content" }}>
-          <p style={{ margin: "0px", fontWeight: "600", fontSize: "large" }}>{title}</p>
-          <p style={{ margin: "0px", fontSize: "small", fontStyle: "italic" }}>{dateAdded}</p>
-        </div>
+        {header}
         <div
           style={{
             height: "fit-content",
@@ -60,34 +93,13 @@ export default function DataCard({ title, dateAdded, chips = [], content }) {
           {content}
         </p>
       </div>
-      <div style={{ width: "100%", display: "flex", justifyContent: "space-between" }}>
-        <Button
-          size='small'
-          disabled={true}
-          style={{
-            fontSize: "small",
-            fontFamily: [
-              "system-ui",
-              "-apple-system",
-              "BlinkMacSystemFont",
-              "Segoe UI",
-              "Roboto",
-              "Oxygen",
-              "Ubuntu",
-              "Cantarell",
-              "Open Sans",
-              "Helvetica Neue",
-              "sans-serif"
-            ],
-            fontWeight: "600"
-          }}
-        >
-          Github
-        </Button>
+      <div style={{ width: "100%" }}>
+        {linkButton}
         <Button
           variant='text'
           size='small'
           style={{
+            float: "right",
             fontFamily: [
               "system-ui",
               "-apple-system",
