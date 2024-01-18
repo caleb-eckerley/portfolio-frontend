@@ -1,5 +1,7 @@
 import Chip from "@mui/material/Chip";
 import DataCard from "/src/components/DataCard.jsx";
+import { v4 as uuidv4 } from "uuid";
+import { formatDate } from "/src/common/formats";
 
 function getHeader(title, employer, startDate, endDate) {
   const header = (
@@ -16,6 +18,21 @@ function getHeader(title, employer, startDate, endDate) {
   return header;
 }
 
+/**
+ *
+ * @param {String} content
+ * @returns [Object]
+ */
+function parseContent(content) {
+  if (!content) return [""];
+  const bullets = content.split("\n");
+  let bulletList = [];
+  for (var b of bullets) {
+    bulletList.push(<li key={uuidv4()}>{b}</li>);
+  }
+  return <ul>{bulletList}</ul>;
+}
+
 export default function WorkList(props) {
   if (props.isHidden) {
     return null;
@@ -28,8 +45,8 @@ export default function WorkList(props) {
     General: { background: "grey", color: "white" }
   };
 
-  var projectCards = [];
-  for (let work of props.projectData) {
+  var workCards = [];
+  for (let work of props.workData) {
     const chipList = work.skills.map((chip) => {
       return (
         <Chip
@@ -44,8 +61,9 @@ export default function WorkList(props) {
         />
       );
     });
-    var header = getHeader("NetSuite Developer", "Solution Source", "September 1, 2022", "July 31, 2023");
-    projectCards.push(<DataCard header={header} chips={chipList} key={work._id} content={work.description} />);
+    var header = getHeader(work.title, work.employer, formatDate(work.start_date), formatDate(work.end_date));
+    workCards.push(<DataCard header={header} chips={chipList} key={work._id} content={parseContent(work.content)} end_date={Date.parse(work.end_date)} />);
   }
-  return <>{projectCards}</>;
+  workCards.sort((a, b) => b.props.end_date - a.props.end_date);
+  return <>{workCards}</>;
 }
