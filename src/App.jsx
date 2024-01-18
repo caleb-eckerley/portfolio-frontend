@@ -15,12 +15,13 @@ import WorkList from "/src/components/WorkList.jsx";
 import ProjectList from "/src/components/ProjectList.jsx";
 import SkillsList from "/src/components/SkillsList.jsx";
 
-import { getProjects, getSkills } from "/src/api/serverCalls.js";
+import { getProjects, getSkills, getWork } from "/src/api/serverCalls.js";
 
 export default function App({ testData }) {
   const [tabState, setTabState] = React.useState(0);
   const [projectData, setProjectData] = React.useState([]);
   const [skillData, setSkillData] = React.useState([]);
+  const [workData, setWorkData] = React.useState([]);
 
   React.useEffect(() => {
     getProjects(setProjectData);
@@ -28,6 +29,10 @@ export default function App({ testData }) {
 
   React.useEffect(() => {
     getSkills(setSkillData);
+  }, []);
+
+  React.useEffect(() => {
+    getWork(setWorkData);
   }, []);
 
   const handleSetTabState = (event, state) => {
@@ -57,8 +62,7 @@ export default function App({ testData }) {
         ]}
       />
       <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-        {/* TODO: Replace with container of generated Experience Plates. Attach hidden prop to that container. */}
-        <WorkList projectData={projectData} isHidden={tabState == 0 ? false : true} />
+        <WorkList workData={workData} isHidden={tabState == 0 ? false : true} />
         <ProjectList projectData={projectData} isHidden={tabState == 1 ? false : true} />
         <SkillsList data={skillData} isHidden={tabState == 2 ? false : true} />
       </div>
