@@ -1,5 +1,6 @@
 import Chip from "@mui/material/Chip";
 import DataCard from "/src/components/DataCard.jsx";
+import { formatDate } from "/src/common/formats";
 
 function getHeader(title, dateAdded) {
   const header = (
@@ -39,8 +40,9 @@ export default function ProjectList(props) {
         />
       );
     });
-    var header = getHeader(project.title, project.start_date);
+    var header = getHeader(project.title, formatDate(project.start_date));
     projectCards.push(<DataCard header={header} chips={chipList} key={project._id} content={project.description} link={"hi!"} />);
   }
+  projectCards.sort((a, b) => b.props.start_date - a.props.start_date);
   return <>{projectCards}</>;
 }

@@ -49,7 +49,7 @@ function getLinkButton(link) {
   }
 }
 
-export default function DataCard({ header, chips = [], content, link }) {
+export default function DataCard({ header, chips = [], content, link, end_date = null }) {
   const [expanded, setExpanded] = React.useState(false);
   const [chipExpanded, setChipExpanded] = React.useState(false);
   const handleExpandClick = () => {
