@@ -49,17 +49,59 @@ function getLinkButton(link) {
   }
 }
 
+function getExpandButton(onClick, expanded) {
+  return (
+    <Button
+      variant='text'
+      size='small'
+      style={{
+        float: "right",
+        fontFamily: [
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Oxygen",
+          "Ubuntu",
+          "Cantarell",
+          "Open Sans",
+          "Helvetica Neue",
+          "sans-serif"
+        ],
+        fontWeight: "600"
+      }}
+      onClick={onClick}
+    >
+      {expanded ? "Collapse" : "Expand"}
+    </Button>
+  );
+}
+
 export default function DataCard({ header, chips = [], content, link, end_date = null }) {
   const [expanded, setExpanded] = React.useState(false);
   const [chipExpanded, setChipExpanded] = React.useState(false);
+  const [showExpandedButton, setShowExpandedButton] = React.useState(true);
+  const ref = React.useRef(null);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
   const handleChipExpanded = () => {
     setChipExpanded(!chipExpanded);
   };
+  React.useEffect(() => {
+    if (!expanded && ref.current.scrollHeight != ref.current.clientHeight) {
+      setShowExpandedButton(true);
+    }
+    if (!expanded && ref.current.scrollHeight == ref.current.clientHeight) {
+      setShowExpandedButton(false);
+    }
+  }, [expanded]);
+
   const chipExpandButton = getChipExpandButtonValue(chips, chipExpanded, handleChipExpanded);
   const linkButton = getLinkButton(link);
+  const expandButton = getExpandButton(handleExpandClick, expanded);
 
   return (
     <Card
@@ -89,36 +131,13 @@ export default function DataCard({ header, chips = [], content, link, end_date =
           {chipExpandButton}
         </div>
         <hr style={{ margin: 0, padding: 0, marginTop: "0.25rem" }} />
-        <p className={expanded ? "" : "clamp"} style={{ margin: 0 }}>
+        <p className={expanded ? "" : "clamp"} style={{ margin: 0 }} ref={ref}>
           {content}
         </p>
       </div>
       <div style={{ width: "100%" }}>
         {linkButton}
-        <Button
-          variant='text'
-          size='small'
-          style={{
-            float: "right",
-            fontFamily: [
-              "system-ui",
-              "-apple-system",
-              "BlinkMacSystemFont",
-              "Segoe UI",
-              "Roboto",
-              "Oxygen",
-              "Ubuntu",
-              "Cantarell",
-              "Open Sans",
-              "Helvetica Neue",
-              "sans-serif"
-            ],
-            fontWeight: "600"
-          }}
-          onClick={handleExpandClick}
-        >
-          {expanded ? "Collapse" : "Expand"}
-        </Button>
+        {showExpandedButton && expandButton}
       </div>
     </Card>
   );
