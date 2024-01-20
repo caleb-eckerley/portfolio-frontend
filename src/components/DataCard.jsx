@@ -1,6 +1,7 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
+import { v4 as uuidv4 } from "uuid";
 
 import "/src/style/DataCard.scss";
 
@@ -78,15 +79,34 @@ function getExpandButton(onClick, expanded) {
   );
 }
 
-export default function DataCard({ header, chips = [], content, link, end_date = null }) {
+/**
+ *
+ * @param {String} content
+ * @returns [Object]
+ */
+function parseList(list) {
+  if (!list || !list.length) return null;
+  let bulletList = [];
+  for (var bullet of list) {
+    bulletList.push(<li key={uuidv4()}>{bullet}</li>);
+  }
+  return <ul>{bulletList}</ul>;
+}
+
+function parseContent(content) {
+  if (!content) return null;
+  return <p style={{ margin: 0 }}>{content}</p>;
+}
+
+export default function DataCard({ header, chips = [], content = "", link = "", end_date = null, contentList = [] }) {
   const [expanded, setExpanded] = React.useState(false);
   const [chipExpanded, setChipExpanded] = React.useState(false);
   const [showExpandedButton, setShowExpandedButton] = React.useState(true);
   const ref = React.useRef(null);
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
   const handleChipExpanded = () => {
     setChipExpanded(!chipExpanded);
   };
@@ -99,6 +119,8 @@ export default function DataCard({ header, chips = [], content, link, end_date =
     }
   }, [expanded]);
 
+  const listItems = parseList(contentList);
+  const contentParagraph = parseContent(content);
   const chipExpandButton = getChipExpandButtonValue(chips, chipExpanded, handleChipExpanded);
   const linkButton = getLinkButton(link);
   const expandButton = getExpandButton(handleExpandClick, expanded);
@@ -131,9 +153,10 @@ export default function DataCard({ header, chips = [], content, link, end_date =
           {chipExpandButton}
         </div>
         <hr style={{ margin: 0, padding: 0, marginTop: "0.25rem" }} />
-        <p className={expanded ? "" : "clamp"} style={{ margin: 0 }} ref={ref}>
-          {content}
-        </p>
+        <div className={expanded ? "" : "clamp"} ref={ref}>
+          {contentParagraph}
+          {listItems}
+        </div>
       </div>
       <div style={{ width: "100%" }}>
         {linkButton}
