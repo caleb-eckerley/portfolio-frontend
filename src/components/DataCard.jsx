@@ -90,7 +90,7 @@ function parseList(list) {
   for (var bullet of list) {
     bulletList.push(<li key={uuidv4()}>{bullet}</li>);
   }
-  return <ul>{bulletList}</ul>;
+  return <ul style={{ paddingLeft: "20px" }}>{bulletList}</ul>;
 }
 
 function parseContent(content) {

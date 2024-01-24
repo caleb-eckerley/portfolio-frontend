@@ -1,17 +1,20 @@
 import { Chip } from "@mui/material";
 
 export default function AboutContainer({ data }) {
-  const chipList = data.chips.map((chip) => {
+  if (!data) {
+    return <section></section>;
+  }
+  const chipList = data.tldr.map((chip) => {
     return (
       <Chip
-        label={chip.text}
+        label={chip.name}
         size='small'
         style={{
-          background: chip.color,
+          background: "blue",
           paddingTop: "0px",
           width: "fit-content"
         }}
-        key={chip.key}
+        key={chip._id}
       />
     );
   });
@@ -35,7 +38,7 @@ export default function AboutContainer({ data }) {
           margin: 0
         }}
       >
-        {data.aboutMeText}
+        {data.content}
       </p>
 
       <div

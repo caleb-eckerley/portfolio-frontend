@@ -15,13 +15,19 @@ import WorkList from "/src/components/WorkList.jsx";
 import ProjectList from "/src/components/ProjectList.jsx";
 import SkillsList from "/src/components/SkillsList.jsx";
 
-import { getProjects, getSkills, getWork } from "/src/api/serverCalls.js";
+import { getProjects, getSkills, getWork, getAbout } from "/src/api/serverCalls.js";
 
 export default function App({ testData }) {
   const [tabState, setTabState] = React.useState(0);
+  const [aboutData, setAboutData] = React.useState(null);
   const [projectData, setProjectData] = React.useState([]);
   const [skillData, setSkillData] = React.useState([]);
   const [workData, setWorkData] = React.useState([]);
+
+  React.useEffect(() => {
+    getAbout(setAboutData);
+    console.log(aboutData);
+  }, []);
 
   React.useEffect(() => {
     getProjects(setProjectData);
@@ -51,7 +57,7 @@ export default function App({ testData }) {
         height: "fit-content"
       }}
     >
-      <AboutContainer data={testData} />
+      <AboutContainer data={aboutData} />
       <NavigationBar
         value={tabState}
         click={handleSetTabState}
