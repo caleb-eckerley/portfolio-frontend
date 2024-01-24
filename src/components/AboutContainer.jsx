@@ -1,10 +1,8 @@
 import { Chip } from "@mui/material";
 
-export default function AboutContainer({ data }) {
-  if (!data) {
-    return <section></section>;
-  }
-  const chipList = data.tldr.map((chip) => {
+function getChipList(chips) {
+  if (!chips) return [];
+  return chips.map((chip) => {
     return (
       <Chip
         label={chip.name}
@@ -18,6 +16,12 @@ export default function AboutContainer({ data }) {
       />
     );
   });
+}
+
+export default function AboutContainer({ data }) {
+  const chipList = getChipList(data.tldr);
+  const content = data.content == undefined ? "" : data.content;
+
   return (
     <section>
       <h1 style={{ margin: "0px" }}>Caleb Eckerley</h1>
@@ -38,7 +42,7 @@ export default function AboutContainer({ data }) {
           margin: 0
         }}
       >
-        {data.content}
+        {content}
       </p>
 
       <div
@@ -48,8 +52,7 @@ export default function AboutContainer({ data }) {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "flex-start",
-          gap: "8px",
-          rowGap: "8px"
+          gap: "0.25rem"
         }}
       >
         {chipList}
