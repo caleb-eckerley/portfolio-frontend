@@ -17,16 +17,15 @@ import SkillsList from "/src/components/SkillsList.jsx";
 
 import { getProjects, getSkills, getWork, getAbout } from "/src/api/serverCalls.js";
 
-export default function App({ testData }) {
+export default function App() {
   const [tabState, setTabState] = React.useState(0);
-  const [aboutData, setAboutData] = React.useState(null);
+  const [aboutData, setAboutData] = React.useState({});
   const [projectData, setProjectData] = React.useState([]);
   const [skillData, setSkillData] = React.useState([]);
   const [workData, setWorkData] = React.useState([]);
 
   React.useEffect(() => {
     getAbout(setAboutData);
-    console.log(aboutData);
   }, []);
 
   React.useEffect(() => {
@@ -58,15 +57,7 @@ export default function App({ testData }) {
       }}
     >
       <AboutContainer data={aboutData} />
-      <NavigationBar
-        value={tabState}
-        click={handleSetTabState}
-        navList={[
-          { text: "Work", href: "" },
-          { text: "Projects", href: "" },
-          { text: "Skills", href: "" }
-        ]}
-      />
+      <NavigationBar value={tabState} click={handleSetTabState} navList={[{ text: "Work" }, { text: "Projects" }, { text: "Skills" }]} />
       <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
         <WorkList workData={workData} isHidden={tabState == 0 ? false : true} />
         <ProjectList projectData={projectData} isHidden={tabState == 1 ? false : true} />
