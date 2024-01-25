@@ -7,7 +7,7 @@ function generateNavItems(navList) {
   for (let idx = 0; idx < navList.length; idx++) {
     let navObj = navList[idx];
 
-    navigationList.push(<Tab label={navObj.text} href={navObj.href} key={idx} value={idx} />);
+    navigationList.push(<Tab label={navObj.text} key={idx} value={idx} sx={{ color: "white" }} />);
   }
   return navigationList;
 }
@@ -18,7 +18,7 @@ export default function NavigationBar({ value, click, navList }) {
   return (
     <div>
       <hr style={{ marginBottom: "0px", marginTop: "0px" }} />
-      <Tabs value={value} onChange={click} variant='fullWidth' centered>
+      <Tabs value={value} onChange={click} variant='fullWidth' centered textColor='secondary' indicatorColor='secondary'>
         {navMembers}
       </Tabs>
       <hr style={{ marginBottom: "0px", marginTop: "0px" }} />

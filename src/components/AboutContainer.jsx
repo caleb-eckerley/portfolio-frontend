@@ -2,16 +2,20 @@ import { Chip } from "@mui/material";
 
 function getChipList(chips) {
   if (!chips) return [];
+  const chipStyleRule = {
+    summary: { background: "gold", color: "black" },
+    skill: { background: "lightblue", color: "black" }
+  };
   return chips.map((chip) => {
     return (
       <Chip
         label={chip.name}
         size='small'
         style={{
-          background: "blue",
           paddingTop: "0px",
           width: "fit-content"
         }}
+        sx={chipStyleRule[chip.type]}
         key={chip._id}
       />
     );
